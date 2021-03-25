@@ -18,6 +18,7 @@ interface CardSettings {
 })
 export class DashboardComponent implements OnInit, OnDestroy {
   private alive = true;
+  url: string;
   res;
   solarValue: number;
   lightCard: CardSettings = {
@@ -100,20 +101,26 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
   async ngOnInit() {
     this.res = await this.apiService.getWorkflowData('dd');
+
+    await this.setDownload();
   }
 
   ngOnDestroy() {
     this.alive = false;
   }
 
-  download() {
-    let url = 'some/url?';
+  async setDownload() {
+   setTimeout(() => {
+     let url = 'http://34.121.144.171/api/parameters?';
 
-    for (const item of this.res.parameters) {
-      if (!item.default) {
-        item.default = '-';
-      }
-      url += 'name' + item.name + '=' + item.default + '&';
-    }
+     for (const item of this.res.parameters) {
+       if (!item.default) {
+         item.default = '-';
+       }
+       url += 'name' + item.name + '=' + item.default + '&';
+     }
+
+     this.url = url;
+   });
   }
 }

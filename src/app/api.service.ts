@@ -10,7 +10,7 @@ export class ApiService {
 
 
   async get(url) {
-    await this.http.get(url).toPromise();
+    return await this.http.get(url).toPromise();
   }
 
   async getWorkflowData(val) {
@@ -18,6 +18,6 @@ export class ApiService {
   }
 
   async getAll() {
-    return mockData;
+    return await this.get('http://34.121.144.171/api/packages');
   }
 }

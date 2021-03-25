@@ -64,11 +64,11 @@
           <div *ngFor="let item of res.parameters" style="margin-bottom: 17px">
             <label>{{ item.name }}</label>
             <div>
-              <input [(ngModel)]="item.default" type="text" nbInput fullWidth shape="semi-round" placeholder=""   style="max-width: 300px;">
+              <input [(ngModel)]="item.default" (ngModelChange)="setDownload()" type="text" nbInput fullWidth shape="semi-round" placeholder=""   style="max-width: 300px;">
             </div>
           </div>
 
-          <button nbButton hero style="margin-top: 12px;" (click)="download()">download params file</button>
+          <a href="{{url}}" target="_blank" nbButton hero style="margin-top: 12px;">download params file</a>
         </nb-tab>
       </nb-tabset>
     </nb-card>
