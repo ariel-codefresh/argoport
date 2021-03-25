@@ -1,0 +1,54 @@
+<div class="row">
+  <div class="col-xxl-9 searchBox" [ngClass]="{ 'inSearch': searchValue.length}">
+    <h1 style="color: #fff; font-size: 67px;">
+      <span>Argoport</span>
+      <nb-icon class="fa fa-anchor" style="font-size: 47px; margin-left: 17px;"></nb-icon>
+    </h1>
+
+
+    <div
+      [ngClass]="{ 'inSearchInput': searchValue.length}"
+      style="position: relative">
+      <input
+        type="text" class="searchInput" placeholder="search templates" [(ngModel)]="searchValue">
+    </div>
+
+    <h3 style="color: #fff;font-size: 17px;" *ngIf="!searchValue.length">Find and use templates for your argo builds</h3>
+  </div>
+</div>
+
+
+<br>
+<div class="row">
+  <h3
+    *ngIf="!searchValue.length"
+    style="width: 100%; text-align: center;margin-bottom: 13px;">Hottest  Templates in the port</h3>
+
+  <h3
+    *ngIf="searchValue.length"
+    style="width: 100%; text-align: center;margin-bottom: 13px;">Results</h3>
+
+
+  <ng-container *ngIf="!searchValue.length">
+    <div class="col-md-4" *ngFor="let item of [1,2,3,4,5,6,7,9,10,11]">
+      <nb-card class="inline-form-card" (click)="router.navigate(['pages/iot-dashboard'])" style="cursor: pointer">
+        <nb-card-header>built_collection</nb-card-header>
+        <nb-card-body>
+          Immutable collections based on the SDK collections. Each SDK collection class is split into a new immutable collection class and a corresponding mutable builder class.
+        </nb-card-body>
+      </nb-card>
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="searchValue.length">
+    <div class="col-md-4">
+      <nb-card class="inline-form-card" (click)="router.navigate(['pages/iot-dashboard'])" style="cursor: pointer">
+        <nb-card-header>built_collection</nb-card-header>
+        <nb-card-body>
+          Immutable collections based on the SDK collections. Each SDK collection class is split into a new immutable collection class and a corresponding mutable builder class.
+        </nb-card-body>
+      </nb-card>
+    </div>
+  </ng-container>
+</div>
+
