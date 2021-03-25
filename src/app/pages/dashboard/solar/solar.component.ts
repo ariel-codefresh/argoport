@@ -15,7 +15,7 @@ declare const echarts: any;
         </div>
         <div class="info">
           <div class="h4 value">{{ val | number }} builds</div>
-          <div class="details subtitle-2"><span>out of</span> 8.421 </div>
+          <div class="details subtitle-2"><span>out of</span> {{ outof}} </div>
         </div>
       </nb-card-body>
     </nb-card>
@@ -24,6 +24,7 @@ declare const echarts: any;
 export class SolarComponent implements AfterViewInit, OnDestroy {
   @Input() label = '';
   @Input() val = 600;
+  @Input() outof = 600;
   private value = 0;
 
   @Input('chartValue')

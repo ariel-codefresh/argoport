@@ -8,7 +8,7 @@ export const mockData = [
     weeklyDownloads: 3,
     stars: 5,
     successRate: {
-      runs: 121,
+      runs: 8000,
       success: 80
     },
     readme: "https://raw.githubusercontent.com/saffi-codefresh/argo-crane/main/README.md",
@@ -30,8 +30,8 @@ export const mockData = [
     weeklyDownloads: 19,
     stars: 15,
     successRate: {
-      runs: 512,
-      success: 401
+      runs: 8400,
+      success: 3528
     },
     readme: "https://raw.githubusercontent.com/arckey/iot-controller/main/README.md",
     changelog: "https://raw.githubusercontent.com/arckey/iot-controller/main/README.md",

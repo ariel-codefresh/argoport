@@ -78,7 +78,7 @@
     <nb-card size="giant">
       <ngx-traffic></ngx-traffic>
 
-      <ngx-solar [chartValue]="solarValue" label="Successes rate" [val]="res.successRate.runs"></ngx-solar>
+      <ngx-solar [chartValue]="solarValue" label="Successes rate" [val]="res.successRate.success" [outof]="res.successRate.runs"></ngx-solar>
 
     </nb-card>
   </div>
