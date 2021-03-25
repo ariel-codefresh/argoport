@@ -30,11 +30,18 @@
 
 
   <ng-container *ngIf="!searchValue.length">
-    <div class="col-md-4" *ngFor="let item of [1,2,3,4,5,6,7,9,10,11]">
+    <div class="col-md-4" *ngFor="let item of res">
       <nb-card class="inline-form-card" (click)="router.navigate(['pages/iot-dashboard'])" style="cursor: pointer">
-        <nb-card-header>built_collection</nb-card-header>
+        <nb-card-header>{{ item.name }}
+          <div style="float: right;    color: #fbff00;">
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+          </div>
+        </nb-card-header>
         <nb-card-body>
-          Immutable collections based on the SDK collections. Each SDK collection class is split into a new immutable collection class and a corresponding mutable builder class.
+          <div style="height: 100px">{{ item.description }}</div>
         </nb-card-body>
       </nb-card>
     </div>
@@ -43,9 +50,16 @@
   <ng-container *ngIf="searchValue.length">
     <div class="col-md-4">
       <nb-card class="inline-form-card" (click)="router.navigate(['pages/iot-dashboard'])" style="cursor: pointer">
-        <nb-card-header>built_collection</nb-card-header>
+        <nb-card-header>{{ res[1].name }}
+          <div style="float: right;    color: #fbff00;">
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+          </div>
+        </nb-card-header>
         <nb-card-body>
-          Immutable collections based on the SDK collections. Each SDK collection class is split into a new immutable collection class and a corresponding mutable builder class.
+          <div style="height: 100px">{{ res[1].description }}</div>
         </nb-card-body>
       </nb-card>
     </div>

@@ -1,8 +1,9 @@
-import {Component, OnDestroy} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import { NbThemeService } from '@nebular/theme';
 import { takeWhile } from 'rxjs/operators' ;
 import { SolarData } from '../../@core/data/solar';
 import {Router} from '@angular/router';
+import {ApiService} from '../../api.service';
 
 interface CardSettings {
   title: string;
@@ -15,9 +16,9 @@ interface CardSettings {
   styleUrls: ['./dashboard.component.scss'],
   templateUrl: './dashboard.component.html',
 })
-export class DashboardComponent implements OnDestroy {
+export class DashboardComponent implements OnInit, OnDestroy {
   private alive = true;
-
+  res;
   solarValue: number;
   lightCard: CardSettings = {
     title: 'Light',
@@ -82,6 +83,7 @@ export class DashboardComponent implements OnDestroy {
     public router: Router,
     private themeService: NbThemeService,
     private solarService: SolarData,
+    private apiService: ApiService,
   ) {
     this.themeService.getJsTheme()
       .pipe(takeWhile(() => this.alive))
@@ -96,7 +98,22 @@ export class DashboardComponent implements OnDestroy {
       });
   }
 
+  async ngOnInit() {
+    this.res = await this.apiService.getWorkflowData('dd');
+  }
+
   ngOnDestroy() {
     this.alive = false;
+  }
+
+  download() {
+    let url = 'some/url?';
+
+    for (const item of this.res.parameters) {
+      if (!item.default) {
+        item.default = '-';
+      }
+      url += 'name' + item.name + '=' + item.default + '&';
+    }
   }
 }

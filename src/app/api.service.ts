@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
+import {mockData} from './mock.data';
 
 @Injectable()
 export class ApiService {
@@ -8,7 +9,15 @@ export class ApiService {
   ) {}
 
 
-  get(){
+  async get(url) {
+    await this.http.get(url).toPromise();
+  }
 
+  async getWorkflowData(val) {
+    return mockData[1];
+  }
+
+  async getAll() {
+    return mockData;
   }
 }

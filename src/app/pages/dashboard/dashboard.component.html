@@ -45,30 +45,30 @@
 <div class="row">
   <div class="col-lg-8">
     <nb-card size="giant" style="overflow: auto">
-      <h1 style="margin-left: 30px;">IO Workflow 2.0.0</h1>
-      <div style="position: relative;top: -15px;margin-left: 34px;">Published Feb 20, 2021 by Ariel Hhenryson</div>
+      <h1 style="margin-left: 30px;">{{ res.name }} {{ res.versions[0] }}</h1>
+      <div style="position: relative;top: -15px;margin-left: 34px;">Published {{ res.createdAt }} by {{ res.author }}</div>
 
 
       <nb-tabset fullWidth>
         <nb-tab tabTitle="Readme">
-          <div markdown ngPreserveWhitespaces src="https://raw.githubusercontent.com/jfcere/ngx-markdown/master/README.md"></div>
+          <div markdown ngPreserveWhitespaces [src]="res.readme"></div>
         </nb-tab>
         <nb-tab tabTitle="ChangeLog">
-          <div markdown ngPreserveWhitespaces src="https://raw.githubusercontent.com/argoproj/argo-workflows/master/CHANGELOG.md"></div>
+          <div markdown ngPreserveWhitespaces [src]="res.changelog"></div>
         </nb-tab>
-        <nb-tab tabTitle="Example">
-          <div markdown ngPreserveWhitespaces src="https://raw.githubusercontent.com/argoproj/argo-workflows/master/docs/argo-server.md"></div>
+        <nb-tab tabTitle="Template">
+          <div markdown ngPreserveWhitespaces [src]="res.template"></div>
         </nb-tab>
         <nb-tab tabTitle="parameters">
 
-          <div *ngFor="let item of [1,2,3,4]" style="margin-bottom: 17px">
-            <label>input text</label>
+          <div *ngFor="let item of res.parameters" style="margin-bottom: 17px">
+            <label>{{ item.name }}</label>
             <div>
-              <input type="text" nbInput fullWidth shape="semi-round" placeholder="Semi-round border"   style="max-width: 300px;">
+              <input [(ngModel)]="item.default" type="text" nbInput fullWidth shape="semi-round" placeholder=""   style="max-width: 300px;">
             </div>
           </div>
 
-          <button nbButton hero style="margin-top: 12px;">download params file</button>
+          <button nbButton hero style="margin-top: 12px;" (click)="download()">download params file</button>
         </nb-tab>
       </nb-tabset>
     </nb-card>
@@ -78,7 +78,7 @@
     <nb-card size="giant">
       <ngx-traffic></ngx-traffic>
 
-      <ngx-solar [chartValue]="solarValue" label="Successes rate"></ngx-solar>
+      <ngx-solar [chartValue]="solarValue" label="Successes rate" [val]="res.successRate.runs"></ngx-solar>
 
     </nb-card>
   </div>

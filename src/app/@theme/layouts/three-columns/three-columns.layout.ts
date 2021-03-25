@@ -9,7 +9,7 @@ import { Component } from '@angular/core';
         <ngx-header></ngx-header>
       </nb-layout-header>
 
-      <nb-sidebar class="menu-sidebar" tag="menu-sidebar" responsive *ngIf="0">
+      <nb-sidebar class="menu-sidebar" tag="menu-sidebar" responsive *ngIf="1">
         <ng-content select="nb-menu"></ng-content>
       </nb-sidebar>
 

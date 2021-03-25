@@ -22,6 +22,7 @@ import {
 } from '@nebular/theme';
 import {MarkdownModule} from 'ngx-markdown';
 import { MarkedOptions, MarkedRenderer } from 'ngx-markdown';
+import {ApiService} from './api.service';
 
 // function that returns `MarkedOptions` with renderer override
 export function markedOptionsFactory(): MarkedOptions {
@@ -64,6 +65,9 @@ export function markedOptionsFactory(): MarkedOptions {
     }),
     CoreModule.forRoot(),
     ThemeModule.forRoot(),
+  ],
+  providers: [
+    ApiService,
   ],
   bootstrap: [AppComponent],
 })
